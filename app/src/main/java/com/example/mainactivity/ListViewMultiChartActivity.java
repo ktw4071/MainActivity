@@ -15,6 +15,7 @@ import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.example.mainactivity.listviewitems.ResultItem;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
@@ -57,7 +58,9 @@ public class ListViewMultiChartActivity extends DemoBase {
         ArrayList<ChartItem> list = new ArrayList<>();
 
         // 30 items
-        for (int i = 0; i < 30; i++) {
+//        list.add(new ResultItem(generateDataLine(0), getApplicationContext()));
+        for (int i = 0; i < 6; i++) {
+
 
             if(i % 3 == 0) {
                 list.add(new LineChartItem(generateDataLine(i + 1), getApplicationContext()));
@@ -109,22 +112,36 @@ public class ListViewMultiChartActivity extends DemoBase {
         ArrayList<Entry> values1 = new ArrayList<>();
 
         for (int i = 0; i < 12; i++) {
-            values1.add(new Entry(i, (int) (Math.random() * 65) + 40));
+            values1.add(new Entry(i, (int) (Math.random() * 10) + 15));
         }
 
-        LineDataSet d1 = new LineDataSet(values1, "New DataSet " + cnt + ", (1)");
-        d1.setLineWidth(2.5f);
-        d1.setCircleRadius(4.5f);
-        d1.setHighLightColor(Color.rgb(244, 117, 117));
-        d1.setDrawValues(false);
+        LineDataSet d1 = new LineDataSet(values1, "Mole " + cnt + ", (1)");
+
+        if( cnt < 3){
+            d1 = new LineDataSet(values1, "Arm "  + " (Mole 1)");
+            d1.setLineWidth(2.5f);
+            d1.setCircleRadius(4.5f);
+            d1.setHighLightColor(Color.rgb(244, 117, 117));
+            d1.setDrawValues(false);
+        }
+
+        else{
+            d1 = new LineDataSet(values1, "Neck " + (cnt - 3) + ", (1)");
+            d1.setLineWidth(2.5f);
+            d1.setCircleRadius(4.5f);
+            d1.setHighLightColor(Color.rgb(244, 117, 117));
+            d1.setDrawValues(false);
+        }
 
         ArrayList<Entry> values2 = new ArrayList<>();
 
         for (int i = 0; i < 12; i++) {
-            values2.add(new Entry(i, values1.get(i).getY() - 30));
+            values2.add(new Entry(i, values1.get(i).getY() - (int)(Math.random() * 15)));
         }
 
-        LineDataSet d2 = new LineDataSet(values2, "New DataSet " + cnt + ", (2)");
+        LineDataSet d2 = new LineDataSet(values2, "Arm "  + " (Mole 2)");
+
+
         d2.setLineWidth(2.5f);
         d2.setCircleRadius(4.5f);
         d2.setHighLightColor(Color.rgb(244, 117, 117));
@@ -149,10 +166,10 @@ public class ListViewMultiChartActivity extends DemoBase {
         ArrayList<BarEntry> entries = new ArrayList<>();
 
         for (int i = 0; i < 12; i++) {
-            entries.add(new BarEntry(i, (int) (Math.random() * 70) + 30));
+            entries.add(new BarEntry(i, (int) (Math.random() * 15) + 10));
         }
 
-        BarDataSet d = new BarDataSet(entries, "New DataSet " + cnt);
+        BarDataSet d = new BarDataSet(entries, "Moles on Arms" );
         d.setColors(ColorTemplate.VORDIPLOM_COLORS);
         d.setHighLightAlpha(255);
 
@@ -170,15 +187,19 @@ public class ListViewMultiChartActivity extends DemoBase {
 
         ArrayList<PieEntry> entries = new ArrayList<>();
 
-        for (int i = 0; i < 4; i++) {
-            entries.add(new PieEntry((float) ((Math.random() * 70) + 30), "Quarter " + (i+1)));
-        }
-
+//        for (int i = 0; i < 4; i++) {
+//            entries.add(new PieEntry((float) ((Math.random() * 70) + 30), "Arm " + (i+1)));
+//        }
+        entries.add(new PieEntry((float) ((Math.random() * 70) + 30), "Healthy" ));
+        entries.add(new PieEntry((float) ((Math.random() * 70) + 30), "Careful" ));
+        entries.add(new PieEntry((float) ((Math.random() * 70) + 30), "Warning" ));
+        entries.add(new PieEntry((float) ((Math.random() * 70) + 30), "Moderate" ));
         PieDataSet d = new PieDataSet(entries, "");
 
         // space between slices
         d.setSliceSpace(2f);
         d.setColors(ColorTemplate.VORDIPLOM_COLORS);
+
 
         return new PieData(d);
     }

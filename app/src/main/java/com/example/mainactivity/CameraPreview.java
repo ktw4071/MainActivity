@@ -385,7 +385,7 @@ class CameraPreview extends ViewGroup implements SurfaceHolder.Callback {
 
                         @Override
                         public Map<String, String> getHeaders () throws AuthFailureError {
-                            String auth = "ya29.GluzBsErhj9V-yP6ho_IaDfzqxMTNkYIMpsPX_Mu1PkLEmHDUiTjGPGgdp0kWeIOPDNvKHgGfaIh764eCPFLzgL2do8XzNy2tJF2OWWjwcMfi-Gws4dO5bkxphBm";
+                            String auth = "ya29.GluzBtrL5fn3zJMqfvhftiuRIlTjVZ_AU1HSnd_wrV3Y-D7vhv78m_-ypuIrSvhUxK25fHq4nTEJN95VmGfrEVt-IiB7lUxaQaxRTHMnJ-t3jCtof6IN3nmlGd_l";
                             HashMap<String, String> headers = new HashMap<String, String>();
                             headers.put("Content-Type", "image/jpeg");
                             headers.put("Authorization", "Bearer " + auth);
